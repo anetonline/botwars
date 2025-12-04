@@ -1,5 +1,5 @@
 /*
-  botwars_utils.js - Utilities for Bot Wars (complete)
+  botwars_utils.js - Utilities for Bot Wars (fixed cross-platform paths)
   - Save/load JSON
   - Directory helpers
   - ANSI printing helpers (printANS)
@@ -14,10 +14,14 @@
 load("sbbsdefs.js");
 
 var BotWarsUtils = (function(){
-    var EXEC_DIR = (typeof js !== "undefined" && js.exec_dir) ? js.exec_dir : ".\\";
-    if (EXEC_DIR.slice(-1) !== "\\" && EXEC_DIR.slice(-1) !== "/") EXEC_DIR += "\\";
-    var DATA_DIR = EXEC_DIR + "botwars_data\\";
-    var SAVE_DIR = EXEC_DIR + "botwars_saves\\";
+    // Normalize exec_dir to use forward slashes and ensure trailing slash.
+    var EXEC_DIR = (typeof js !== "undefined" && js.exec_dir) ? js.exec_dir : "./";
+    // Replace any backslashes with forward slashes (portable)
+    EXEC_DIR = String(EXEC_DIR).replace(/\\/g, "/");
+    if (EXEC_DIR.slice(-1) !== "/") EXEC_DIR += "/";
+
+    var DATA_DIR = EXEC_DIR + "botwars_data/";
+    var SAVE_DIR = EXEC_DIR + "botwars_saves/";
     var MESSAGE_DB = DATA_DIR + "messages.json";
 
     function ensureDir(p) {
@@ -27,9 +31,9 @@ var BotWarsUtils = (function(){
     function ensureSaveDir(){
         ensureDir(DATA_DIR);
         ensureDir(SAVE_DIR);
-        ensureDir(DATA_DIR + "guilds\\");
-        ensureDir(DATA_DIR + "maintenance_reports\\");
-        ensureDir(DATA_DIR + "leaderboards\\");
+        ensureDir(DATA_DIR + "guilds/");
+        ensureDir(DATA_DIR + "maintenance_reports/");
+        ensureDir(DATA_DIR + "leaderboards/");
     }
 
     function nowDateStr(){
@@ -39,8 +43,9 @@ var BotWarsUtils = (function(){
     }
 
     function saveJSON(path,obj){
+        var f = null;
         try {
-            var f=new File(path);
+            f = new File(path);
             if(!f.open("w")) return false;
             f.write(JSON.stringify(obj, null, 2));
             f.close();
@@ -52,9 +57,10 @@ var BotWarsUtils = (function(){
     }
 
     function loadJSON(path){
+        var f = null;
         try {
             if (!file_exists(path)) return null;
-            var f = new File(path);
+            f = new File(path);
             if (!f.open("r")) return null;
             var txt = f.readAll().join("");
             f.close();
@@ -111,8 +117,8 @@ var BotWarsUtils = (function(){
         if (!name) return false;
         var candidates = [
             EXEC_DIR + name,
-            EXEC_DIR + "art\\" + name,
-            EXEC_DIR + "art/" + name
+            EXEC_DIR + "art/" + name,
+            EXEC_DIR + "art\\" + name
         ];
         var chosen = null;
         for (var i=0;i<candidates.length;i++) if (file_exists(candidates[i])) { chosen = candidates[i]; break; }
@@ -125,8 +131,9 @@ var BotWarsUtils = (function(){
                 return true;
             }
         } catch (e) {}
+        var f = null;
         try {
-            var f = new File(chosen);
+            f = new File(chosen);
             if (!f.open("rb")) return false;
             var content = f.read();
             f.close();
