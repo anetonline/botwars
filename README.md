@@ -92,24 +92,24 @@ Note: Some optional modules (shop, bar, areas, etc.) may be referenced by the ma
 
 
                          Bot Wars 
-╠══╠════════════════════════════════════════════════════════╣
-║  │Name                       Bot Wars                     ║
-║  │Internal Code              BOTWARS                      ║
-║  │Start-up Directory         ../xtrn/botwars              ║
-║  │Command Line               ?botwars.js                  ║
-║  │Clean-up Command Line                                   ║
-║  │Execution Cost             None                         ║
-║  │Access Requirements                                     ║
-║  │Execution Requirements                                  ║
-║  │Multiple Concurrent Users  Yes                          ║
-║  │I/O Method                 FOSSIL or UART               ║
-║  │Native Executable          No                           ║
-║  │Use Shell or New Context   No                           ║
-║  │Modify User Data           No                           ║
-║  │Execute on Event           No                           ║
-║  │Pause After Execution      No                           ║
-║  │Disable Local Display      No                           ║
-║  │BBS Drop File Type         None                         ║
+
+Name                       Bot Wars                     
+Internal Code              BOTWARS                      
+Start-up Directory         ../xtrn/botwars              
+Command Line               ?botwars.js                  
+Clean-up Command Line                                   
+Execution Cost             None                         
+Access Requirements                                     
+Execution Requirements                                  
+Multiple Concurrent Users  Yes                          
+I/O Method                 FOSSIL or UART               
+Native Executable          No                           
+Use Shell or New Context   No                           
+Modify User Data           No                           
+Execute on Event           No                           
+Pause After Execution      No                           
+Disable Local Display      No                           
+BBS Drop File Type         None                         
 
 
 6. Optional: schedule daily maintenance
