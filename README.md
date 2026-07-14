@@ -1,7 +1,7 @@
 # Bot Wars — Guilds, Server Overlord Boss, and IGM Mini‑Games - Don't let the Bots win!! We can't let AI take over the world, we need your help!
 
 # By; Sting Ray - A-Net Online BBS 
-# bbs.a-net.online  -  Telnet: 1337, SSH: 1338, RLogin:1339  -  http://a-net.fyi  -  https://a-net-online.lol
+# bbs.a-net.online  -  Telnet: 1337, SSH: 1338  -  http://bbs.a-net.fyi  -  https://a-net-online.lol
 
 Welcome to A-Net Online's 'Bot Wars — a Synchronet door game that puts you in charge of a small network of devices, defends against persistent bot attacks, fights a shifting multi‑phase Server Overlord boss, joins or founds guilds, and plays IGM mini‑games for rewards.
 
